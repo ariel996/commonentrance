@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Entrance" uuid="37edf61f-5b62-4534-ad88-8f8bd27c4bd1">
+    <database-info product="MySQL" version="5.5.8-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="entrance"/>
+    <table name="candidate" schema="" catalog="entrance" type="TABLE">
+      <column name="formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nomCandidat" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="dateNaiss" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lieuNaiss" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="nationalite" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cycle" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bankReceipt" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="entrance_year" sqlType="VARCHAR" precision="7" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="formCandidate"/>
+      <exported-key name="fk_department_candidate1" table="department" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_diploma_candidate1" table="diploma" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_diplomeFr_candidate1" table="diplomefr" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_examination_language_candidate1" table="examination_language" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_gce_candidate1" table="gce" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_Institution_candidate1" table="institution" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_lieu_examen_candidate1" table="lieu_examen" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_MajorPaper_candidate1" table="majorpaper" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_MinorPaper_candidate1" table="minorpaper" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_region_candidate1" table="region" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+      <exported-key name="fk_yearEntry_candidate1" table="yearentry" schema="" catalog="entrance" columns="candidate_formCandidate"/>
+    </table>
+    <table name="department" schema="" catalog="entrance" type="TABLE">
+      <column name="iddepartment" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nomDepartement" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iddepartment"/>
+      <foreign-key name="fk_department_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_filiere_department1" table="filiere" schema="" catalog="entrance" columns="department_iddepartment"/>
+      <index name="fk_department_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="diploma" schema="" catalog="entrance" type="TABLE">
+      <column name="iddiploma" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="diploma_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="annee_obtention" sqlType="YEAR" precision="0" scale="0" nullable="true" jdbcType="91"/>
+      <column name="mention" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GPA" sqlType="DECIMAL" precision="4" scale="2" nullable="true" jdbcType="3"/>
+      <column name="annee_level_one" sqlType="YEAR" precision="0" scale="0" nullable="true" jdbcType="91"/>
+      <column name="annee_level_two" sqlType="YEAR" precision="0" scale="0" nullable="true" jdbcType="91"/>
+      <column name="GPA1" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GPA2" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iddiploma"/>
+      <foreign-key name="fk_diploma_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_diploma_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="diplomefr" schema="" catalog="entrance" type="TABLE">
+      <column name="iddiplomeFr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nomDiplome" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="annee_obtention" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mention_diplome" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="serie_diplome" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="iddiplomeFr"/>
+      <foreign-key name="fk_diplomeFr_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_diplomeFr_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="division" schema="" catalog="entrance" type="TABLE">
+      <column name="iddivision" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="divisionName" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="region_idregion" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="iddivision"/>
+      <foreign-key name="fk_division_region1" columns="region_idregion" ref-table="region" ref-schema="" ref-catalog="entrance" ref-columns="idregion" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_division_region1" unique="false" columns="region_idregion"/>
+    </table>
+    <table name="examination_language" schema="" catalog="entrance" type="TABLE">
+      <column name="idLanguage" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="LibeleLanguage" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idLanguage"/>
+      <foreign-key name="fk_examination_language_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_examination_language_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="filiere" schema="" catalog="entrance" type="TABLE">
+      <column name="idfiliere" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="nomFiliere" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="department_iddepartment" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idfiliere"/>
+      <foreign-key name="fk_filiere_department1" columns="department_iddepartment" ref-table="department" ref-schema="" ref-catalog="entrance" ref-columns="iddepartment" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_filiere_department1" unique="false" columns="department_iddepartment"/>
+    </table>
+    <table name="gce" schema="" catalog="entrance" type="TABLE">
+      <column name="idgce_olevel" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="annee_obtention" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade1" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade2" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade3" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade4" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade5" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade6" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade7" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet8_grade8" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade9" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sujet_grade10" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idgce_olevel"/>
+      <foreign-key name="fk_gce_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_gce_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="institution" schema="" catalog="entrance" type="TABLE">
+      <column name="idInstitution" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TitleInstitution" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idInstitution"/>
+      <foreign-key name="fk_Institution_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Institution_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="lieu_examen" schema="" catalog="entrance" type="TABLE">
+      <column name="idlieu_examen" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="lieu_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idlieu_examen"/>
+      <foreign-key name="fk_lieu_examen_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_lieu_examen_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="majorpaper" schema="" catalog="entrance" type="TABLE">
+      <column name="idMajorPaper" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="paperOne" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idMajorPaper"/>
+      <foreign-key name="fk_MajorPaper_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_MajorPaper_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="minorpaper" schema="" catalog="entrance" type="TABLE">
+      <column name="idMinorPaper" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="paperTwo" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idMinorPaper"/>
+      <foreign-key name="fk_MinorPaper_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_MinorPaper_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="region" schema="" catalog="entrance" type="TABLE">
+      <column name="idregion" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="regionName" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idregion"/>
+      <foreign-key name="fk_region_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_division_region1" table="division" schema="" catalog="entrance" columns="region_idregion"/>
+      <index name="fk_region_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+    <table name="yearentry" schema="" catalog="entrance" type="TABLE">
+      <column name="idFirst_Year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FyearName" sqlType="YEAR" precision="0" scale="0" nullable="true" jdbcType="91"/>
+      <column name="candidate_formCandidate" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idFirst_Year"/>
+      <foreign-key name="fk_yearEntry_candidate1" columns="candidate_formCandidate" ref-table="candidate" ref-schema="" ref-catalog="entrance" ref-columns="formCandidate" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_yearEntry_candidate1" unique="false" columns="candidate_formCandidate"/>
+    </table>
+  </data-source>
+</component>
